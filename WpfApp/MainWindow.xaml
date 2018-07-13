@@ -5,8 +5,72 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Save The People!" Height="800" Width="1000">
+    <Window.Resources>
+        <ControlTemplate x:Key="EnemyTemplate" TargetType="{x:Type ContentControl}">
+            <Grid/>
+        </ControlTemplate>
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="Black" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="160"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition/>
+            <RowDefinition Height="160"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="startButton" Content="Start!" 
+                Margin="30,56,20,59" Grid.Row="2" Width="110" 
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                Height="45" FontWeight="Bold" BorderThickness="3"
+                FontFamily="Arial Black" FontSize="24" Background="Black"
+                Foreground="White" BorderBrush="White"/>
+
+        <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="2">
+
+            <TextBlock
+                TextWrapping="Wrap" Text="Avoid it!" FontWeight="Bold" FontSize="20" 
+                HorizontalAlignment="Center" Background="Black" Foreground="White"/>
+
+            <ContentControl Content="ContentControl" HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Margin="0,3,0,0" 
+                            Template="{StaticResource EnemyTemplate}"/>
+            <Ellipse Fill="Red" Height="100" Stroke="Black" Width="100"/>
+
+        </StackPanel>
+
+        <ProgressBar Grid.Column="1" Grid.Row="2" Height="20"/>
+
+        <Canvas x:Name="playArea" Margin="0" Grid.Row="1" Grid.ColumnSpan="3">
+            <Canvas.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0.889"/>
+                    <GradientStop Color="#FF00AEFF" Offset="0.248"/>
+                </LinearGradientBrush>
+            </Canvas.Background>
+            <StackPanel x:Name="Human" Orientation="Vertical">
+                <Ellipse Fill="White" Stroke="Black" Width="10" Margin="0" Height="10"/>
+                <Rectangle Fill="White" Stroke="Black" Width="10" Margin="0" Height="25"/>
+            </StackPanel>
+            <TextBlock x:Name="gameOverText" Canvas.Left="286" TextWrapping="Wrap" 
+                       Text="Game Over" Canvas.Top="142" FontFamily="Arial Black" 
+                       FontSize="72" FontWeight="Bold" FontStyle="Italic" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Canvas>
+        <TextBlock x:Name="gameTitle" Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="Save The People!" VerticalAlignment="Center" Foreground="White" FontSize="48" FontWeight="Bold" FontFamily="Arial Black" FontStyle="Italic" HorizontalAlignment="Center"/>
+
     </Grid>
+
 </Window>
