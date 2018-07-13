@@ -36,7 +36,7 @@
                 VerticalAlignment="Center" HorizontalAlignment="Center"
                 Height="45" FontWeight="Bold" BorderThickness="3"
                 FontFamily="Arial Black" FontSize="24" Background="Black"
-                Foreground="White" BorderBrush="White"/>
+                Foreground="White" BorderBrush="White" Click="startButton_Click"/>
 
         <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="2">
 
